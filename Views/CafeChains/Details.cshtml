@@ -1,0 +1,45 @@
+﻿@model CafeChain
+@{
+    ViewData["Title"] = "Детали";
+}
+<h2>@Model.Name</h2>
+<div class="card mb-4">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Тип кухни</dt>
+            <dd class="col-sm-9">@Model.CuisineType</dd>
+            <dt class="col-sm-3">Регионы</dt>
+            <dd class="col-sm-9">@Model.Regions</dd>
+            <dt class="col-sm-3">Меню</dt>
+            <dd class="col-sm-9">@Model.Menu</dd>
+            <dt class="col-sm-3">Год основания</dt>
+            <dd class="col-sm-9">@Model.FoundedYear</dd>
+        </dl>
+    </div>
+</div>
+<h4>Заказы этой сети</h4>
+@if (Model.Orders != null && Model.Orders.Any())
+{
+    <table class="table">
+        <thead>
+            <tr><th>Номер</th><th>Блюда</th><th>Время</th><th>Статус</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var o in Model.Orders)
+            {
+                <tr>
+                    <td>@o.OrderNumber</td>
+                    <td>@o.Dishes</td>
+                    <td>@o.OrderTime.ToString("g")</td>
+                    <td>@o.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">Заказов нет.</p>
+}
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Изменить</a>
+<a asp-action="Index" class="btn btn-secondary">Назад</a>

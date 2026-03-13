@@ -1,0 +1,36 @@
+﻿@model CafeChain
+@{
+    ViewData["Title"] = "Новая сеть кафе";
+}
+<h2>Новая сеть кафе</h2>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CuisineType" class="form-label"></label>
+                <input asp-for="CuisineType" class="form-control" />
+                <span asp-validation-for="CuisineType" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Regions" class="form-label"></label>
+                <input asp-for="Regions" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Menu" class="form-label"></label>
+                <textarea asp-for="Menu" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label asp-for="FoundedYear" class="form-label"></label>
+                <input asp-for="FoundedYear" class="form-control" />
+                <span asp-validation-for="FoundedYear" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-success">Создать</button>
+            <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+</div>

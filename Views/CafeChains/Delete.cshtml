@@ -1,0 +1,21 @@
+﻿@model CafeChain
+@{
+    ViewData["Title"] = "Удаление";
+}
+<h2>Удалить сеть кафе?</h2>
+<div class="alert alert-danger">
+    Вы уверены, что хотите удалить <strong>@Model.Name</strong>? Все связанные заказы будут удалены!
+</div>
+<dl class="row">
+    <dt class="col-sm-3">Название</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+    <dt class="col-sm-3">Тип кухни</dt>
+    <dd class="col-sm-9">@Model.CuisineType</dd>
+    <dt class="col-sm-3">Год основания</dt>
+    <dd class="col-sm-9">@Model.FoundedYear</dd>
+</dl>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Да, удалить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

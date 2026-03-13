@@ -1,0 +1,19 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Удаление заказа";
+}
+<h2>Удалить заказ?</h2>
+<div class="alert alert-danger">
+    Вы уверены, что хотите удалить заказ <strong>@Model.OrderNumber</strong>?
+</div>
+<dl class="row">
+    <dt class="col-sm-3">Блюда</dt>
+    <dd class="col-sm-9">@Model.Dishes</dd>
+    <dt class="col-sm-3">Сеть кафе</dt>
+    <dd class="col-sm-9">@Model.CafeChain?.Name</dd>
+</dl>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Да, удалить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>

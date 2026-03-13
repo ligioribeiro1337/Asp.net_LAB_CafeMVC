@@ -1,0 +1,39 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Редактирование заказа";
+}
+<h2>Редактирование заказа @Model.OrderNumber</h2>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label asp-for="OrderNumber" class="form-label"></label>
+                <input asp-for="OrderNumber" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Dishes" class="form-label"></label>
+                <textarea asp-for="Dishes" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label asp-for="OrderTime" class="form-label"></label>
+                <input asp-for="OrderTime" type="datetime-local" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Status" class="form-label"></label>
+                <select asp-for="Status" class="form-select">
+                    <option>Новый</option>
+                    <option>Готовится</option>
+                    <option>Выполнен</option>
+                    <option>Отменён</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CafeChainId" class="form-label"></label>
+                <select asp-for="CafeChainId" class="form-select" asp-items="@ViewBag.CafeChainId"></select>
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+</div>

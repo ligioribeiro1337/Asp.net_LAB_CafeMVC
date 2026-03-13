@@ -1,0 +1,21 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Детали заказа";
+}
+<h2>Заказ @Model.OrderNumber</h2>
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Блюда</dt>
+            <dd class="col-sm-9">@Model.Dishes</dd>
+            <dt class="col-sm-3">Время</dt>
+            <dd class="col-sm-9">@Model.OrderTime.ToString("g")</dd>
+            <dt class="col-sm-3">Статус</dt>
+            <dd class="col-sm-9">@Model.Status</dd>
+            <dt class="col-sm-3">Сеть кафе</dt>
+            <dd class="col-sm-9">@Model.CafeChain?.Name</dd>
+        </dl>
+    </div>
+</div>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning mt-3">Изменить</a>
+<a asp-action="Index" class="btn btn-secondary mt-3">Назад</a>
